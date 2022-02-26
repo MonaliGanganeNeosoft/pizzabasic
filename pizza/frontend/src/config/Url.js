@@ -1,1 +1,1 @@
-export const My_Url="http://localhost/8888/"
+export const My_Url="http://localhost:8888/"
