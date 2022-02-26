@@ -6,19 +6,15 @@ import Signup from './components/Signup';
 import Login from './components/login';
 function App() {
   return (
-    
     <div className='App'>
-    <Router>
-      <Navb />
-      <Routes>
-        <Route path='/' element={<Home/>}/>
-        <Route path='/signup' element={<Signup/>}/>
-        <Route path='/login' element={<Login/>}/>       
-      </Routes>
-
-
-    </Router>
-
+      <Router>
+        <Navb />
+        <Routes>
+          <Route path='/' element={<Home/>}/>
+          <Route path='/signup' element={<Signup/>}/>
+          <Route path='/login' element={<Login/>}/>       
+        </Routes>
+      </Router>
     </div>
     
   );

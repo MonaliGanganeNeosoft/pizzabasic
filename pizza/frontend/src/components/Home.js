@@ -5,9 +5,8 @@ export default function Home() {
   const navigate=useNavigate();
   return (
     <>
-    <p>hii</p>
+    <p>hii home page</p>
     <Button onClick={()=>navigate("/signup")} variant="primary">Signup</Button>{' '}
-    
     </>
   )
 }
