@@ -1,70 +1,108 @@
-import React,{useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button,Row,Col,Form,Container,InputGroup,FormControl } from "react-bootstrap";
-import {getUsers,login} from "../config/Myservice";
+
+import {
+  Button,
+  Row,
+  Col,
+  Form,
+  Container,
+  InputGroup,
+  FormControl,
+} from "react-bootstrap";
+
+import { getUsers, login } from "../config/Myservice";
+
 const regForPassword = RegExp(
   /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/
 );
 
-function Login(){
-  const [userdata,setUserdata] = useState([]);
+function Login() {
+  
+  const [userdata, setUserdata] = useState([]);
   const navigate = useNavigate();
-  const [user,setUser]=useState({email:"",password:""})
-  const [errors,setErrors] = useState({email:"",password:""});
-  useEffect(()=>{
-    getUsers().then((res)=>{
-      if(res.data.err == 0){
+
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
+  const [errors, setErrors] = useState({
+    email: "",
+    password: "",
+  });
+  useEffect(() => {
+    getUsers().then((res) => {
+      if (res.data.err == 0) {
         setUserdata(res.data.data);
       }
     });
-  },[]);
-  const handler=(e)=>{
-    const {name,value}=e.target;
-    switch(name){
-      case "email":let eemail = value.length > 1 ?"":"Enter valid email";
-        setErrors({...errors,email:eemail})
-        break; 
-      case "password":let epassword = regForPassword.test(value)?"":"Enter valid password";
-        setErrors({...errors,password:epassword})
+  }, []);
+
+  const handler = (event) => {
+    const { name, value } = event.target;
+
+    switch (name) {
+      case "email":
+        let eusername = value.length > 1 ? "" : "Enter Valid UserName";
+        setErrors({ ...errors, email: eusername });
+
         break;
+
+      case "password":
+        let epassword = regForPassword.test(value)
+          ? ""
+          : "Enter Valid Password";
+        setErrors({ ...errors, password: epassword });
+        break;
+
       default:
     }
-    setUser((prevState)=>({
+    setUser((prevState) => ({
       ...prevState,
-      [name]:value,
+      [name]: value,
     }));
-  }
-  const formSubmit = async (e)=>{
-    console.log(userdata);
-    e.preventDefault();
-    if(validate(errors) && document.getElementById("email").value !== "" && document.getElementById("password").value !== "")
-    {
-      login(user).then((res)=>{
-        if(res.data.err == 0)  {
+  };
+
+  const formSubmit = async (event) => {
+     console.log(userdata);
+    event.preventDefault();
+
+    if (
+      validate(errors) &&
+      document.getElementById("email").value !== "" &&
+      document.getElementById("password").value !== ""
+    ) {
+      // var ver = false;
+      login(user).then((res) => {
+        if (res.data.err == 0) {
           console.log(res.data);
           let login = user.email;
+
           console.log("logged in");
-          localStorage.setItem("_token",res.data.token);
-          localStorage.setItem("login",JSON.stringify(login));
+          localStorage.setItem("_token", res.data.token);
+
+          localStorage.setItem("login", JSON.stringify(login));
           navigate("/dashboard");
         }
-        if(res.data.err == 1){
+        if (res.data.err == 1) {
           console.log(res.data);
-          alert("Email or password is wrong");
+          alert("Email or Password is wrong");
         }
       });
-    }else{
-      alert("pls enter valid data")
-    };
-  }
-  const validate=(errors)=>{
-    let valid=true;
-    Object.values(errors).forEach((val)=>val.length > 0 && (valid = false));
+    } else {
+      alert("Please Enter Valid Data");
+    }
+  };
+  const validate = (errors) => {
+    let valid = true;
+    Object.values(errors).forEach((val) => val.length > 0 && (valid = false));
     return valid;
   };
-  
- 
-  return (
+
+  if (localStorage.getItem("login")) {
+    return <h1>You Are Logged In</h1>;
+  } else {
+    return (
       <div>
         <Container>
           <h1>Log In</h1>
@@ -124,4 +162,6 @@ function Login(){
       </div>
     );
   }
-export default Login
+}
+
+export default Login;

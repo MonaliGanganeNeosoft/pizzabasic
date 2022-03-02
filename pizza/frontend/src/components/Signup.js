@@ -64,7 +64,10 @@ export default function Signup() {
     Object.values(errors).forEach((val)=>val.length > 0 && (valid = false));
     return valid;
   };
-  
+
+  if(localStorage.getItem("login")) {   //->>>for logged in direct register to go dashboard
+    return <h1>You Are Logged In</h1>;   
+  } else {
     return (
       <>
       <Container className='mt-3'>
@@ -132,4 +135,4 @@ export default function Signup() {
       </>
     )
  }
-
+}
