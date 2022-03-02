@@ -77,7 +77,7 @@ router.get("/user",(req,res)=>{
     })
 })
 //get pizza data
-router.get("/pizzadata",(req,res)=>{
+router.get("/pizzadata",AuthenticateToken,(req,res)=>{
     console.log(req.body)
     pizzaModel.find({},(err,data)=>{
         if(err){
