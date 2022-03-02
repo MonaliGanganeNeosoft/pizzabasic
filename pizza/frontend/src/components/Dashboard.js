@@ -1,7 +1,8 @@
 import React,{useEffect, useState} from 'react'
 import { Button, Card,Container, Row } from 'react-bootstrap';
 import {getPizzaData} from "../config/Myservice"
-import {useDispatch,useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
+import jwt_decode from "jwt-decode";
 
 function Dashboard() {
   const[prodata,setProdata]=useState([]);
@@ -14,8 +15,25 @@ function Dashboard() {
       if(res.data.err == 0){
         setProdata(res.data.data);
       }
-    })
-  },[])
+    });
+    const getcart=JSON.parse(localStorage.getItem("cart"));
+    console.log(getcart)
+    if(getcart){
+      setCart(getcart);
+      const count = JSON.parse(localStorage.getItem("cart"))
+        .map((item)=>Number(item.quantity))
+        .reduce((prev,curr)=>prev+curr,0);
+      console.log("count"+count);
+      dispactch({type:"count",payload:count});
+      }
+    if(localStorage.getItem("_token")!=undefined){
+      let token=localStorage.getItem("_token");
+      let decode=jwt_decode(token);
+      console.log(decode.uid);
+      setUid(decode.uid);
+    }
+  },[]);
+  
   const addCart=(id,prod)=>{
     //console.log("click")
     let obj={id:prod.id,pname:prod.pname,price:prod.price,image:prod.image,quantity:1};
