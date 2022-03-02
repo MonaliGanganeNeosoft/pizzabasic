@@ -5,7 +5,7 @@ import {useNavigate} from "react-router-dom";
 
 
 function GetOrders(){
-    const[order,setOrder]=useState();
+    const [order,setOrder] = useState([]);//use array
     const navigate=useNavigate();
     useEffect(()=>{
         getOrders().then((res)=>{
@@ -13,7 +13,7 @@ function GetOrders(){
                 setOrder(res.data.data);
                 console.log(res.data.data);
             }
-        })
+        });
     },[]);
     return(
         <>
@@ -29,15 +29,17 @@ function GetOrders(){
                         </tr>
                     </thead>
                     <tbody>
-                        {/* {order && order.orders.map((order,i)=>{
+                        {order[0] && 
+                          order[0].orders.map((order,i) => (
                             <tr>
                                 <td>{i+1}</td>
-                                <td><img src={order.inage} width="70" height="70"/></td>
+                                <td><img src={order.image} alt="moni" width="70" height="70"/></td>
                                 <td>{order.pname}</td>
                                 <td>{order.price}</td>
                                 <td>{order.quantity}</td>
                             </tr>
-                        })} */}
+                          ))}
+
                         <tr>
                             <td></td>
                             <td colSpan="4"><Button variant="dark" size="lg" onClick={()=>navigate("/dashboard")}>Order More</Button></td>

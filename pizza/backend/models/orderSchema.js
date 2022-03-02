@@ -2,31 +2,19 @@ const mongoose=require("mongoose")
 const orderSchema=new mongoose.Schema({
     orders:[
         {
-            id:{
-                type:Number
-            },
-            pname:{
-                type:String
-            },
-            price:{
-                type:Number
-            },
-            image:{
-                type:String
-            },
-            date:{
-                type:Date,
-                default:Date.now
-            },
-            quantity:{
-                type:String
-            },
-        }
+            id:{type:Number},
+            pname:{type:String},
+            price:{type:Number},
+            image:{type:String},
+            quantity:{type:String},
+            date:{type:Date,default:Date.now}
+            
+        },
     ],
     total:{
         type:Number
     },
-    cardNum:{
+    cardnum:{
         type:String
     },
     email:{

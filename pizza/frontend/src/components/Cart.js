@@ -29,6 +29,7 @@ function Cart() {
       .reduce((prev,curr)=>prev+curr,0);
     console.log("count"+count);
     dispatch({type:"count",payload:count});
+    totalcalc();
   },[cart]);
 
   const cartDelete=(id)=>{

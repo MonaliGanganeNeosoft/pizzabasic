@@ -7,6 +7,7 @@ import Login from './components/Login';
 import Dashboard from "./components/Dashboard";
 import Cart from "./components/Cart";
 import Checkout from './components/Checkout';
+import GetOrders from './components/GetOrders';
 function App() {
   return (
     <div className='App'>
@@ -19,6 +20,8 @@ function App() {
           <Route path='/dashboard' element={<Dashboard />} />  
           <Route path='/cart' element={<Cart/>}></Route>   
           <Route path="/checkout" element={<Checkout/>}></Route> 
+          <Route path="/getorders" element={<GetOrders/>}></Route>
+          {/* <Route path="/getorders" element={<getOrders />}></Route> */}
         </Routes>
       </Router>
     </div>
