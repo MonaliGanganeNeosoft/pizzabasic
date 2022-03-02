@@ -77,7 +77,7 @@ router.get("/user",(req,res)=>{
     })
 })
 //get pizza data
-router.get("/pizzadata",AuthenticateToken,(req,res)=>{
+router.get("/pizzadata",(req,res)=>{
     console.log(req.body)
     pizzaModel.find({},(err,data)=>{
         if(err){
@@ -110,11 +110,8 @@ router.get("/orders",(req,res)=>{
         if(err){
             res.json({err:1,msg:"data not found"})
         }
-        // }else if(data==null){
-        //     res.json({err:1,msg:"no orders"})
-        // }
         else{
-            res.json({err:0,msg:"found all orders"})
+            res.json({err:0,data:data})
         }
     })
 })

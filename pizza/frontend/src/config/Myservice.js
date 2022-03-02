@@ -11,6 +11,12 @@ export function login(data){
 export function getUsers(){
     return axios.get(`${My_Url}user`)
 }
+
+export function getPizzaData(){
+    return axios.get(`${My_Url}pizzadata`)
+}
+
+
 // export function getPizzaData(){
 //     return axios.get(`${My_Url}pizzadata`,{
 //         headers:{"authorization":`Bearer ${token}`}
