@@ -69,45 +69,25 @@ function Login(){
         <Container>
           <h1>Log In</h1>
           <Form id="myForm">
+            
             <Form.Group>
               <Row className="justify-content-md-center">
                 <Col xs lg="5">
-                  <Form.Label></Form.Label>
                   <InputGroup className="mb-2">
                     <InputGroup.Text>@</InputGroup.Text>
-
-                    <FormControl
-                      type="text"
-                      placeholder=" Email"
-                      name="email"
-                      id="email"
-                      onChange={handler}
-                    />
+                    <FormControl  type="text" placeholder=" Email"  name="email" id="email" onChange={handler}/>
                   </InputGroup>
-                  {errors.email && (
-                    <Form.Text style={{ color: "red" }}>
-                      {errors.email}
-                    </Form.Text>
-                  )}
+                  {errors.email && (<Form.Text style={{ color: "red" }}>{errors.email}</Form.Text>)}
                 </Col>
               </Row>
             </Form.Group>
+
             <Form.Group>
               <Form.Label></Form.Label>
               <Row className="justify-content-md-center">
                 <Col xs lg="5">
-                  <Form.Control
-                    type="password"
-                    placeholder="Enter password"
-                    name="password"
-                    id="password"
-                    onChange={handler}
-                  />
-                  {errors.password && (
-                    <Form.Text style={{ color: "red" }}>
-                      {errors.password}
-                    </Form.Text>
-                  )}
+                  <Form.Control type="password" placeholder="Enter password" name="password" id="password" onChange={handler}/>
+                  {errors.password && (<Form.Text style={{ color: "red" }}>{errors.password}</Form.Text>)}
                 </Col>
               </Row>
             </Form.Group>
@@ -115,9 +95,7 @@ function Login(){
             <br />
 
             <Form.Group>
-              <Button variant="outline-dark" type="submit" onClick={formSubmit}>
-                Log In
-              </Button>
+              <Button variant="outline-dark" type="submit" onClick={formSubmit}>Log In</Button>
             </Form.Group>
           </Form>
         </Container>
