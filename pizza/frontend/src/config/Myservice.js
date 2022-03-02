@@ -15,6 +15,9 @@ export function getUsers(){
 export function getPizzaData(){
     return axios.get(`${My_Url}pizzadata`)
 }
+export function checkoutOrder(){
+    return axios.post(`${My_Url}checkout`)
+}
 
 
 // export function getPizzaData(){
