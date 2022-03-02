@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react';
-import { useDispatch,useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { checkoutOrder } from '../config/Myservice';
 import { Container,Button,Alert } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';

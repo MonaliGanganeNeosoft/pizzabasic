@@ -103,31 +103,31 @@ router.post("/pizzacreate",(req,res)=>{
         }
     })
 })
-//get order
-router.get("/orders",(req,res)=>{
-    console.log(req.body);
-    orderModel.find({},(err,data)=>{
-        if(err){
-            res.json({err:1,msg:"data not found"})
-        }
-        else{
-            res.json({err:0,data:data})
-        }
-    })
-})
 //checkout
 router.post("/checkout",(req,res)=>{
     console.log(req.body)
     let cart=req.body.cart;
     let total=req.body.total;
-    let cardNum=req.body.cardNum;
-    let email=req.body.email;
-    let insc=new orderModel({cart:cart,total:total,cardNum:cardNum,email:email})
+    let cardnum=req.body.cardnum;
+    let email=req.body.uid;
+    let insc=new orderModel({orders:cart,total:total,cardnum:cardnum,email:email})//Orders is imporatant to render data frontside
     insc.save((err)=>{
         if(err){
             res.json({err:1,msg:"already added"})
         }else{
-            res.json({err:0,mag:"added"})
+            res.json({err:0,msg:"added"})
+        }
+    })
+})
+//get order
+router.get("/getorders",(req,res)=>{
+    console.log(req.body);
+    orderModel.find({},(err,data)=>{
+        if(err){
+            console.log(err);
+        }
+        else{
+            res.json({err:0,data:data})
         }
     })
 })
