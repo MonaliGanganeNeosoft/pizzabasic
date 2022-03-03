@@ -22,6 +22,18 @@ export function getOrders(){
     return axios.get(`${My_Url}getorders`)
 }
 
+export function getSingleUser(email){
+    return axios.get(`${My_Url}user/${email}`)
+}
+
+export function updateProfile(id,data){
+    return axios.put(`${My_Url}updateuser/${id}`,data)
+}
+export function deleteUser(index){
+    return axios.delete(`${My_Url}deleteuser/${index}`)
+}
+
+
 // export function getPizzaData(){
 //     return axios.get(`${My_Url}pizzadata`,{
 //         headers:{"authorization":`Bearer ${token}`}

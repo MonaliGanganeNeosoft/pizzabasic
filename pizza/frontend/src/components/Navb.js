@@ -67,6 +67,14 @@ const Navb = () => {
                                             Update Profile
                                             </NavDropdown.Item>
 
+                                            <NavDropdown.Item
+                                            as={Link}
+                                            to="/user"
+                                            style={{ textDecoration: "none" }}
+                                            >
+                                            All user
+                                            </NavDropdown.Item>
+
                                             <NavDropdown.Divider />
                                             <NavDropdown.Item href="#action/3.4">
                                             Separated link
