@@ -76,6 +76,50 @@ router.get("/user",(req,res)=>{
         }
     })
 })
+
+
+
+//single user for profile
+router.get("/user/:email",(req,res)=>{
+    console.log(req.body)
+    const email=req.params.email;
+    userModel.findOne({email},(err,data)=>{
+        if(err) throw err;
+        else{
+            res.json({err:0,data:data})
+        }
+    })
+})
+
+//Update Profile
+router.put("/updateuser/:id",(req,res)=>{
+    console.log(req.body);
+    let id = req.params.id;
+    let fname = req.body.fname;
+    let lname = req.body.lname;
+    let email = req.body.email;
+    let password = req.body.password;
+    userModel.updateOne({_id:id},{$set:{fname,lname,email,password},},(err)=>{
+        if(err)throw err;
+        else{
+            res.send("user updated")
+        }
+    }) 
+})
+
+//Delete user profile
+router.delete("/deleteuser/:id",(req,res)=>{
+    const id = req.params.id;
+    userModel.deleteOne({_id:id},(err)=>{
+        if(err)throw err;
+        else{
+            res.send("user deleted")
+        }
+    });
+});
+
+
+
 //get pizza data
 router.get("/pizzadata",(req,res)=>{
     console.log(req.body)

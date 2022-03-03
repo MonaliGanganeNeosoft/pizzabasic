@@ -8,6 +8,9 @@ import Dashboard from "./components/Dashboard";
 import Cart from "./components/Cart";
 import Checkout from './components/Checkout';
 import GetOrders from './components/GetOrders';
+import Profile from "./components/Profile";
+import Getuser from "./components/Getuser";
+import Updateprofile from './components/Updateprofile';
 function App() {
   return (
     <div className='App'>
@@ -21,7 +24,9 @@ function App() {
           <Route path='/cart' element={<Cart/>}></Route>   
           <Route path="/checkout" element={<Checkout/>}></Route> 
           <Route path="/getorders" element={<GetOrders/>}></Route>
-          {/* <Route path="/getorders" element={<getOrders />}></Route> */}
+          <Route path='/profile' element={<Profile/>} ></Route>
+          <Route path="/user" element={<Getuser/>}/>
+          <Route path="/updateprofile" element={<Updateprofile/>}></Route>
         </Routes>
       </Router>
     </div>
